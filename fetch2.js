@@ -15,7 +15,7 @@ function displayUserTableRow(user) {
 
 async function refreshTable() {
     try {
-        const response = await fetch("http://localhost/cs2033/singlePageApp/start.php?action=userListAPI");
+        const response = await fetch("start.php?action=userListAPI");
         const data = await response.json();
         
         const userTable = document.getElementById("userTable").getElementsByTagName('tbody')[0];
@@ -24,8 +24,6 @@ async function refreshTable() {
         data.forEach(user => {
             displayUserTableRow(user);
         });
-        refreshTime.innerHTML = `Updated: ${Date()}`;
-
     } catch (error) {
         console.error('Error refreshing user list:', error);
     }
